@@ -74,7 +74,7 @@ elseif(Julia_EXECUTABLE)
 elseif(Julia_PREFIX)
     set(Julia_INCLUDE_DIRS ${Julia_PREFIX}/include/julia)
 endif()
-set(Julia_INCLUDE_DIRS ${Julia_INCLUDE_DIRS};$ENV{includedir})
+set(Julia_INCLUDE_DIRS ${Julia_INCLUDE_DIRS};$ENV{includedir}/julia)
 MESSAGE(STATUS "Julia_INCLUDE_DIRS:   ${Julia_INCLUDE_DIRS}")
 
 ###################
