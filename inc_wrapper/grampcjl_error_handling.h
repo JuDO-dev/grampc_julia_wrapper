@@ -30,17 +30,17 @@
  */
 
 /**
- * Get the last error message.
+ * Get the last warning message.
  *
- * Returns 0 if no error, 1 if a warning, and 2 if an error.
+ * Returns 0 if no warning, 1 if a warning.
  */
-int grampcjl_get_last_error( char* message );
+int grampcjl_get_last_warning( char* message );
 
 /**
- * Clear the error fields in the library.
+ * Clear the last warning in the library.
  *
  */
-void grampcjl_clear_last_error();
+void grampcjl_clear_last_warning();
 
 
 /*

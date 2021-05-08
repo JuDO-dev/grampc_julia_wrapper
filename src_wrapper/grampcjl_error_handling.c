@@ -29,26 +29,28 @@
 #include "stdio.h"
 #include "string.h"
 
-// Static variables to hold the last error information
+
+// Static variables to hold the last warning information
 // We really should never have very long messages, so just make the buffer very long
 // to not have any that are cutoff.
-static int  last_err_type = 0;
-static char last_err_msg[1024];
+static int  last_warn_type = 0;
+static char last_warn_msg[1024];
 
-void grampcjl_clear_last_error()
+
+void grampcjl_clear_last_warning()
 {
-    last_err_type   = 0;
-    last_err_msg[0] = 0;
+    last_warn_type   = 0;
+    last_warn_msg[0] = 0;
 }
 
 
-int grampcjl_get_last_error( char* message )
+int grampcjl_get_last_warning( char* message )
 {
-    int retVal = last_err_type;
-    strcpy( message, last_err_msg );
+    int retVal = last_warn_type;
+    strcpy( message, last_warn_msg );
 
-    // Zero out the last error
-    grampcjl_clear_last_error();
+    // Zero out the last warning after reasing
+    grampcjl_clear_last_warning();
 
     return retVal;
 }
@@ -56,30 +58,22 @@ int grampcjl_get_last_error( char* message )
 
 void printError( const char* x )
 {
-    strcpy( last_err_msg, x );
-
-    // Say it was an error
-    last_err_type = 2;
-
+    // Throw a Julia ErrorException with the provided message
     jl_error( x );
 }
 
 
 void printErrorAddString( const char* mess, const char* addstring )
 {
-    sprintf( last_err_msg, "%s: %s", mess, addstring );
-
-    // Say it was an error
-    last_err_type = 2;
-
-    jl_error( last_err_msg );
+    // Throw a Julia ErrorException with the provided message
+    jl_errorf( "%s: %s", mess, addstring );
 }
 
 
 void printWarningAddString( const char* mess, const char* addstring )
 {
-    sprintf( last_err_msg, "%s: %s", mess, addstring );
+    sprintf( last_warn_msg, "%s: %s", mess, addstring );
 
-    // Say it was a warning
-    last_err_type = 1;
+    // Say there was a warning
+    last_warn_type = 1;
 }
