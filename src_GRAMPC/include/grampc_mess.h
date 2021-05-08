@@ -88,7 +88,9 @@
 #define STATUS_MSG_INTEGRATOR_MATRIX_IS_SINGULAR    "Integration not successful - Matrix is repeatedly singular.\n"
 #define STATUS_MSG_INTEGRATOR_H_MIN                 "Integrator ruku45 used hmin.\n"
 
-
+// Use our own error handling functions
+#include "grampcjl_error_handling.h"
+/*
 #ifdef MEXCOMPILE
 #include "mex.h"
 #define myPrint(x,y)   mexPrintf((x),(y))
@@ -101,7 +103,7 @@
 #define printErrorAddString(mess,addstring)  printf("%s: %s",(addstring),(mess)); exit(EXIT_FAILURE)
 #define printWarningAddString(mess,addstring)  printf("%s: %s",(addstring),(mess));
 #endif
-
+*/
 
 
 /* Function definitions */

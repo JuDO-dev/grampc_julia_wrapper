@@ -31,6 +31,13 @@ cmake_minimum_required( VERSION 3.13 )
 project( Julia_GRAMPC )
 
 ########################################################################
+# Get the flags needed to link against libjulia
+########################################################################
+set( CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/CMakeModules )
+find_package(Julia REQUIRED)
+
+
+########################################################################
 # Setup the shared library for building
 ########################################################################
 set( GRAMPC_PATH ${CMAKE_CURRENT_SOURCE_DIR}/src_GRAMPC)
@@ -55,6 +62,7 @@ set( SOURCES
     )
 
 add_library( grampc_julia SHARED
+             ${CMAKE_CURRENT_SOURCE_DIR}/src_wrapper/grampcjl_error_handling.c
              ${CMAKE_CURRENT_SOURCE_DIR}/src_wrapper/grampcjl_problem_functions.c
              ${SOURCES}
             )
@@ -62,7 +70,12 @@ add_library( grampc_julia SHARED
 target_include_directories( grampc_julia PRIVATE
                             ${CMAKE_CURRENT_SOURCE_DIR}/inc_wrapper
                             ${GRAMPC_PATH}/include
+                            ${Julia_INCLUDE_DIRS}
                            )
+
+target_link_libraries( grampc_julia
+                       ${Julia_LIBRARY}
+                      )
 
 include( GNUInstallDirs )
 
