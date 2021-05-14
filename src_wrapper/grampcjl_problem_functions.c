@@ -26,16 +26,16 @@
 
 /** OCP dimensions: states (Nx), controls (Nu), parameters (Np), equalities (Ng),
     inequalities (Nh), terminal equalities (NgT), terminal inequalities (NhT) **/
-void ocp_dim(typeInt *Nx, typeInt *Nu, typeInt *Np, typeInt *Ng, typeInt *Nh, typeInt *NgT, typeInt *NhT, typeUSERPARAM *userparam)
+void ocp_dim( typeInt *Nx, typeInt *Nu, typeInt *Np, typeInt *Ng, typeInt *Nh, typeInt *NgT, typeInt *NhT, typeUSERPARAM *userparam )
 {
     julia_user_wrapper* wrapper = ( julia_user_wrapper* ) userparam;
     wrapper->funcs.ocp_dim( Nx, Nu, Np, Ng, Nh, NgT, NhT, wrapper->user_param );
 }
 
 
-/** System function f(t,x,u,p,userparam)
+/** System function f(t,x,u,p,userparam )
     ------------------------------------ **/
-void ffct(typeRNum *out, ctypeRNum t, ctypeRNum *x, ctypeRNum *u, ctypeRNum *p, typeUSERPARAM *userparam)
+void ffct( typeRNum *out, ctypeRNum t, ctypeRNum *x, ctypeRNum *u, ctypeRNum *p, typeUSERPARAM *userparam )
 {
     julia_user_wrapper* wrapper = ( julia_user_wrapper* ) userparam;
     wrapper->funcs.ffct( out, t, x, u, p, wrapper->user_param );
@@ -43,7 +43,7 @@ void ffct(typeRNum *out, ctypeRNum t, ctypeRNum *x, ctypeRNum *u, ctypeRNum *p, 
 
 
 /** Jacobian df/dx multiplied by vector vec, i.e. (df/dx)^T*vec or vec^T*(df/dx) **/
-void dfdx_vec(typeRNum *out, ctypeRNum t, ctypeRNum *x, ctypeRNum *vec, ctypeRNum *u, ctypeRNum *p, typeUSERPARAM *userparam)
+void dfdx_vec( typeRNum *out, ctypeRNum t, ctypeRNum *x, ctypeRNum *vec, ctypeRNum *u, ctypeRNum *p, typeUSERPARAM *userparam )
 {
     julia_user_wrapper* wrapper = ( julia_user_wrapper* ) userparam;
     wrapper->funcs.dfdx_vec( out, t, x, vec, u, p, wrapper->user_param );
@@ -51,7 +51,7 @@ void dfdx_vec(typeRNum *out, ctypeRNum t, ctypeRNum *x, ctypeRNum *vec, ctypeRNu
 
 
 /** Jacobian df/du multiplied by vector vec, i.e. (df/du)^T*vec or vec^T*(df/du) **/
-void dfdu_vec(typeRNum *out, ctypeRNum t, ctypeRNum *x, ctypeRNum *vec, ctypeRNum *u, ctypeRNum *p, typeUSERPARAM *userparam)
+void dfdu_vec( typeRNum *out, ctypeRNum t, ctypeRNum *x, ctypeRNum *vec, ctypeRNum *u, ctypeRNum *p, typeUSERPARAM *userparam )
 {
     julia_user_wrapper* wrapper = ( julia_user_wrapper* ) userparam;
     wrapper->funcs.dfdu_vec( out, t, x, vec, u, p, wrapper->user_param );
@@ -59,16 +59,16 @@ void dfdu_vec(typeRNum *out, ctypeRNum t, ctypeRNum *x, ctypeRNum *vec, ctypeRNu
 
 
 /** Jacobian df/dp multiplied by vector vec, i.e. (df/dp)^T*vec or vec^T*(df/dp) **/
-void dfdp_vec(typeRNum *out, ctypeRNum t, ctypeRNum *x, ctypeRNum *vec, ctypeRNum *u, ctypeRNum *p, typeUSERPARAM *userparam)
+void dfdp_vec( typeRNum *out, ctypeRNum t, ctypeRNum *x, ctypeRNum *vec, ctypeRNum *u, ctypeRNum *p, typeUSERPARAM *userparam )
 {
     julia_user_wrapper* wrapper = ( julia_user_wrapper* ) userparam;
     wrapper->funcs.dfdp_vec( out, t, x, vec, u, p, wrapper->user_param );
 }
 
 
-/** Integral cost l(t,x(t),u(t),p,xdes,udes,userparam)
+/** Integral cost l(t,x(t),u(t),p,xdes,udes,userparam )
     -------------------------------------------------- **/
-void lfct(typeRNum *out, ctypeRNum t, ctypeRNum *x, ctypeRNum *u, ctypeRNum *p, ctypeRNum *xdes, ctypeRNum *udes, typeUSERPARAM *userparam)
+void lfct( typeRNum *out, ctypeRNum t, ctypeRNum *x, ctypeRNum *u, ctypeRNum *p, ctypeRNum *xdes, ctypeRNum *udes, typeUSERPARAM *userparam )
 {
     julia_user_wrapper* wrapper = ( julia_user_wrapper* ) userparam;
     wrapper->funcs.lfct( out, t, x, u, p, xdes, udes, wrapper->user_param );
@@ -76,7 +76,7 @@ void lfct(typeRNum *out, ctypeRNum t, ctypeRNum *x, ctypeRNum *u, ctypeRNum *p, 
 
 
 /** Gradient dl/dx **/
-void dldx(typeRNum *out, ctypeRNum t, ctypeRNum *x, ctypeRNum *u, ctypeRNum *p, ctypeRNum *xdes, ctypeRNum *udes, typeUSERPARAM *userparam)
+void dldx( typeRNum *out, ctypeRNum t, ctypeRNum *x, ctypeRNum *u, ctypeRNum *p, ctypeRNum *xdes, ctypeRNum *udes, typeUSERPARAM *userparam )
 {
     julia_user_wrapper* wrapper = ( julia_user_wrapper* ) userparam;
     wrapper->funcs.dldx( out, t, x, u, p, xdes, udes, wrapper->user_param );
@@ -84,7 +84,7 @@ void dldx(typeRNum *out, ctypeRNum t, ctypeRNum *x, ctypeRNum *u, ctypeRNum *p, 
 
 
 /** Gradient dl/du **/
-void dldu(typeRNum *out, ctypeRNum t, ctypeRNum *x, ctypeRNum *u, ctypeRNum *p, ctypeRNum *xdes, ctypeRNum *udes, typeUSERPARAM *userparam)
+void dldu( typeRNum *out, ctypeRNum t, ctypeRNum *x, ctypeRNum *u, ctypeRNum *p, ctypeRNum *xdes, ctypeRNum *udes, typeUSERPARAM *userparam )
 {
     julia_user_wrapper* wrapper = ( julia_user_wrapper* ) userparam;
     wrapper->funcs.dldu( out, t, x, u, p, xdes, udes, wrapper->user_param );
@@ -92,16 +92,16 @@ void dldu(typeRNum *out, ctypeRNum t, ctypeRNum *x, ctypeRNum *u, ctypeRNum *p, 
 
 
 /** Gradient dl/dp **/
-void dldp(typeRNum *out, ctypeRNum t, ctypeRNum *x, ctypeRNum *u, ctypeRNum *p, ctypeRNum *xdes, ctypeRNum *udes, typeUSERPARAM *userparam)
+void dldp( typeRNum *out, ctypeRNum t, ctypeRNum *x, ctypeRNum *u, ctypeRNum *p, ctypeRNum *xdes, ctypeRNum *udes, typeUSERPARAM *userparam )
 {
     julia_user_wrapper* wrapper = ( julia_user_wrapper* ) userparam;
     wrapper->funcs.dldp( out, t, x, u, p, xdes, udes, wrapper->user_param );
 }
 
 
-/** Terminal cost V(T,x(T),p,xdes,userparam)
+/** Terminal cost V(T,x(T),p,xdes,userparam )
     ---------------------------------------- **/
-void Vfct(typeRNum *out, ctypeRNum T, ctypeRNum *x, ctypeRNum *p, ctypeRNum *xdes, typeUSERPARAM *userparam)
+void Vfct( typeRNum *out, ctypeRNum T, ctypeRNum *x, ctypeRNum *p, ctypeRNum *xdes, typeUSERPARAM *userparam )
 {
     julia_user_wrapper* wrapper = ( julia_user_wrapper* ) userparam;
     wrapper->funcs.Vfct( out, T, x, p, xdes, wrapper->user_param );
@@ -109,7 +109,7 @@ void Vfct(typeRNum *out, ctypeRNum T, ctypeRNum *x, ctypeRNum *p, ctypeRNum *xde
 
 
 /** Gradient dV/dx **/
-void dVdx(typeRNum *out, ctypeRNum T, ctypeRNum *x, ctypeRNum *p, ctypeRNum *xdes, typeUSERPARAM *userparam)
+void dVdx( typeRNum *out, ctypeRNum T, ctypeRNum *x, ctypeRNum *p, ctypeRNum *xdes, typeUSERPARAM *userparam )
 {
     julia_user_wrapper* wrapper = ( julia_user_wrapper* ) userparam;
     wrapper->funcs.dVdx( out, T, x, p, xdes, wrapper->user_param );
@@ -117,7 +117,7 @@ void dVdx(typeRNum *out, ctypeRNum T, ctypeRNum *x, ctypeRNum *p, ctypeRNum *xde
 
 
 /** Gradient dV/dp **/
-void dVdp(typeRNum *out, ctypeRNum T, ctypeRNum *x, ctypeRNum *p, ctypeRNum *xdes, typeUSERPARAM *userparam)
+void dVdp( typeRNum *out, ctypeRNum T, ctypeRNum *x, ctypeRNum *p, ctypeRNum *xdes, typeUSERPARAM *userparam )
 {
     julia_user_wrapper* wrapper = ( julia_user_wrapper* ) userparam;
     wrapper->funcs.dVdp( out, T, x, p, xdes, wrapper->user_param );
@@ -125,16 +125,16 @@ void dVdp(typeRNum *out, ctypeRNum T, ctypeRNum *x, ctypeRNum *p, ctypeRNum *xde
 
 
 /** Gradient dV/dT **/
-void dVdT(typeRNum *out, ctypeRNum T, ctypeRNum *x, ctypeRNum *p, ctypeRNum *xdes, typeUSERPARAM *userparam)
+void dVdT( typeRNum *out, ctypeRNum T, ctypeRNum *x, ctypeRNum *p, ctypeRNum *xdes, typeUSERPARAM *userparam )
 {
     julia_user_wrapper* wrapper = ( julia_user_wrapper* ) userparam;
     wrapper->funcs.dVdT( out, T, x, p, xdes, wrapper->user_param );
 }
 
 
-/** Equality constraints g(t,x(t),u(t),p,uperparam) = 0
+/** Equality constraints g(t,x(t),u(t),p,userparam ) = 0
     --------------------------------------------------- **/
-void gfct(typeRNum *out, ctypeRNum t, ctypeRNum *x, ctypeRNum *u, ctypeRNum *p, typeUSERPARAM *userparam)
+void gfct( typeRNum *out, ctypeRNum t, ctypeRNum *x, ctypeRNum *u, ctypeRNum *p, typeUSERPARAM *userparam )
 {
     julia_user_wrapper* wrapper = ( julia_user_wrapper* ) userparam;
     wrapper->funcs.gfct( out, t, x, u, p, wrapper->user_param );
@@ -142,7 +142,7 @@ void gfct(typeRNum *out, ctypeRNum t, ctypeRNum *x, ctypeRNum *u, ctypeRNum *p, 
 
 
 /** Jacobian dg/dx multiplied by vector vec, i.e. (dg/dx)^T*vec or vec^T*(dg/dx) **/
-void dgdx_vec(typeRNum *out, ctypeRNum t, ctypeRNum *x, ctypeRNum *u, ctypeRNum *p, ctypeRNum *vec, typeUSERPARAM *userparam)
+void dgdx_vec( typeRNum *out, ctypeRNum t, ctypeRNum *x, ctypeRNum *u, ctypeRNum *p, ctypeRNum *vec, typeUSERPARAM *userparam )
 {
     julia_user_wrapper* wrapper = ( julia_user_wrapper* ) userparam;
     wrapper->funcs.dgdx_vec( out, t, x, u, p, vec, wrapper->user_param );
@@ -150,7 +150,7 @@ void dgdx_vec(typeRNum *out, ctypeRNum t, ctypeRNum *x, ctypeRNum *u, ctypeRNum 
 
 
 /** Jacobian dg/du multiplied by vector vec, i.e. (dg/du)^T*vec or vec^T*(dg/du) **/
-void dgdu_vec(typeRNum *out, ctypeRNum t, ctypeRNum *x, ctypeRNum *u, ctypeRNum *p, ctypeRNum *vec, typeUSERPARAM *userparam)
+void dgdu_vec( typeRNum *out, ctypeRNum t, ctypeRNum *x, ctypeRNum *u, ctypeRNum *p, ctypeRNum *vec, typeUSERPARAM *userparam )
 {
     julia_user_wrapper* wrapper = ( julia_user_wrapper* ) userparam;
     wrapper->funcs.dgdu_vec( out, t, x, u, p, vec, wrapper->user_param );
@@ -158,16 +158,16 @@ void dgdu_vec(typeRNum *out, ctypeRNum t, ctypeRNum *x, ctypeRNum *u, ctypeRNum 
 
 
 /** Jacobian dg/dp multiplied by vector vec, i.e. (dg/dp)^T*vec or vec^T*(dg/dp) **/
-void dgdp_vec(typeRNum *out, ctypeRNum t, ctypeRNum *x, ctypeRNum *u, ctypeRNum *p, ctypeRNum *vec, typeUSERPARAM *userparam)
+void dgdp_vec( typeRNum *out, ctypeRNum t, ctypeRNum *x, ctypeRNum *u, ctypeRNum *p, ctypeRNum *vec, typeUSERPARAM *userparam )
 {
     julia_user_wrapper* wrapper = ( julia_user_wrapper* ) userparam;
     wrapper->funcs.dgdp_vec( out, t, x, u, p, vec, wrapper->user_param );
 }
 
 
-/** Inequality constraints h(t,x(t),u(t),p,uperparam) <= 0
+/** Inequality constraints h(t,x(t),u(t),p,userparam ) <= 0
     ------------------------------------------------------ **/
-void hfct(typeRNum *out, ctypeRNum t, ctypeRNum *x, ctypeRNum *u, ctypeRNum *p, typeUSERPARAM *userparam)
+void hfct( typeRNum *out, ctypeRNum t, ctypeRNum *x, ctypeRNum *u, ctypeRNum *p, typeUSERPARAM *userparam )
 {
     julia_user_wrapper* wrapper = ( julia_user_wrapper* ) userparam;
     wrapper->funcs.hfct( out, t, x, u, p, wrapper->user_param );
@@ -175,7 +175,7 @@ void hfct(typeRNum *out, ctypeRNum t, ctypeRNum *x, ctypeRNum *u, ctypeRNum *p, 
 
 
 /** Jacobian dh/dx multiplied by vector vec, i.e. (dh/dx)^T*vec or vec^T*(dg/dx) **/
-void dhdx_vec(typeRNum *out, ctypeRNum t, ctypeRNum *x, ctypeRNum *u, ctypeRNum *p, ctypeRNum *vec, typeUSERPARAM *userparam)
+void dhdx_vec( typeRNum *out, ctypeRNum t, ctypeRNum *x, ctypeRNum *u, ctypeRNum *p, ctypeRNum *vec, typeUSERPARAM *userparam )
 {
     julia_user_wrapper* wrapper = ( julia_user_wrapper* ) userparam;
     wrapper->funcs.dhdx_vec( out, t, x, u, p, vec, wrapper->user_param );
@@ -183,7 +183,7 @@ void dhdx_vec(typeRNum *out, ctypeRNum t, ctypeRNum *x, ctypeRNum *u, ctypeRNum 
 
 
 /** Jacobian dh/du multiplied by vector vec, i.e. (dh/du)^T*vec or vec^T*(dg/du) **/
-void dhdu_vec(typeRNum *out, ctypeRNum t, ctypeRNum *x, ctypeRNum *u, ctypeRNum *p, ctypeRNum *vec, typeUSERPARAM *userparam)
+void dhdu_vec( typeRNum *out, ctypeRNum t, ctypeRNum *x, ctypeRNum *u, ctypeRNum *p, ctypeRNum *vec, typeUSERPARAM *userparam )
 {
     julia_user_wrapper* wrapper = ( julia_user_wrapper* ) userparam;
     wrapper->funcs.dhdu_vec( out, t, x, u, p, vec, wrapper->user_param );
@@ -191,16 +191,16 @@ void dhdu_vec(typeRNum *out, ctypeRNum t, ctypeRNum *x, ctypeRNum *u, ctypeRNum 
 
 
 /** Jacobian dh/dp multiplied by vector vec, i.e. (dh/dp)^T*vec or vec^T*(dg/dp) **/
-void dhdp_vec(typeRNum *out, ctypeRNum t, ctypeRNum *x, ctypeRNum *u, ctypeRNum *p, ctypeRNum *vec, typeUSERPARAM *userparam)
+void dhdp_vec( typeRNum *out, ctypeRNum t, ctypeRNum *x, ctypeRNum *u, ctypeRNum *p, ctypeRNum *vec, typeUSERPARAM *userparam )
 {
     julia_user_wrapper* wrapper = ( julia_user_wrapper* ) userparam;
     wrapper->funcs.dhdp_vec( out, t, x, u, p, vec, wrapper->user_param );
 }
 
 
-/** Terminal equality constraints gT(T,x(T),p,uperparam) = 0
+/** Terminal equality constraints gT(T,x(T),p,userparam ) = 0
     -------------------------------------------------------- **/
-void gTfct(typeRNum *out, ctypeRNum T, ctypeRNum *x, ctypeRNum *p, typeUSERPARAM *userparam)
+void gTfct( typeRNum *out, ctypeRNum T, ctypeRNum *x, ctypeRNum *p, typeUSERPARAM *userparam )
 {
     julia_user_wrapper* wrapper = ( julia_user_wrapper* ) userparam;
     wrapper->funcs.gTfct( out, T, x, p, wrapper->user_param );
@@ -208,7 +208,7 @@ void gTfct(typeRNum *out, ctypeRNum T, ctypeRNum *x, ctypeRNum *p, typeUSERPARAM
 
 
 /** Jacobian dgT/dx multiplied by vector vec, i.e. (dgT/dx)^T*vec or vec^T*(dgT/dx) **/
-void dgTdx_vec(typeRNum *out, ctypeRNum T, ctypeRNum *x, ctypeRNum *p, ctypeRNum *vec, typeUSERPARAM *userparam)
+void dgTdx_vec( typeRNum *out, ctypeRNum T, ctypeRNum *x, ctypeRNum *p, ctypeRNum *vec, typeUSERPARAM *userparam )
 {
     julia_user_wrapper* wrapper = ( julia_user_wrapper* ) userparam;
     wrapper->funcs.dgTdx_vec( out, T, x, p, vec, wrapper->user_param );
@@ -216,7 +216,7 @@ void dgTdx_vec(typeRNum *out, ctypeRNum T, ctypeRNum *x, ctypeRNum *p, ctypeRNum
 
 
 /** Jacobian dgT/dp multiplied by vector vec, i.e. (dgT/dp)^T*vec or vec^T*(dgT/dp) **/
-void dgTdp_vec(typeRNum *out, ctypeRNum T, ctypeRNum *x, ctypeRNum *p, ctypeRNum *vec, typeUSERPARAM *userparam)
+void dgTdp_vec( typeRNum *out, ctypeRNum T, ctypeRNum *x, ctypeRNum *p, ctypeRNum *vec, typeUSERPARAM *userparam )
 {
     julia_user_wrapper* wrapper = ( julia_user_wrapper* ) userparam;
     wrapper->funcs.dgTdp_vec( out, T, x, p, vec, wrapper->user_param );
@@ -224,16 +224,16 @@ void dgTdp_vec(typeRNum *out, ctypeRNum T, ctypeRNum *x, ctypeRNum *p, ctypeRNum
 
 
 /** Jacobian dgT/dT multiplied by vector vec, i.e. (dgT/dT)^T*vec or vec^T*(dgT/dT) **/
-void dgTdT_vec(typeRNum *out, ctypeRNum T, ctypeRNum *x, ctypeRNum *p, ctypeRNum *vec, typeUSERPARAM *userparam)
+void dgTdT_vec( typeRNum *out, ctypeRNum T, ctypeRNum *x, ctypeRNum *p, ctypeRNum *vec, typeUSERPARAM *userparam )
 {
     julia_user_wrapper* wrapper = ( julia_user_wrapper* ) userparam;
     wrapper->funcs.dgTdT_vec( out, T, x, p, vec, wrapper->user_param );
 }
 
 
-/** Terminal inequality constraints hT(T,x(T),p,uperparam) <= 0
+/** Terminal inequality constraints hT(T,x(T),p,userparam ) <= 0
     ----------------------------------------------------------- **/
-void hTfct(typeRNum *out, ctypeRNum T, ctypeRNum *x, ctypeRNum *p, typeUSERPARAM *userparam)
+void hTfct( typeRNum *out, ctypeRNum T, ctypeRNum *x, ctypeRNum *p, typeUSERPARAM *userparam )
 {
     julia_user_wrapper* wrapper = ( julia_user_wrapper* ) userparam;
     wrapper->funcs.hTfct( out, T, x, p, wrapper->user_param );
@@ -241,7 +241,7 @@ void hTfct(typeRNum *out, ctypeRNum T, ctypeRNum *x, ctypeRNum *p, typeUSERPARAM
 
 
 /** Jacobian dhT/dx multiplied by vector vec, i.e. (dhT/dx)^T*vec or vec^T*(dhT/dx) **/
-void dhTdx_vec(typeRNum *out, ctypeRNum T, ctypeRNum *x, ctypeRNum *p, ctypeRNum *vec, typeUSERPARAM *userparam)
+void dhTdx_vec( typeRNum *out, ctypeRNum T, ctypeRNum *x, ctypeRNum *p, ctypeRNum *vec, typeUSERPARAM *userparam )
 {
     julia_user_wrapper* wrapper = ( julia_user_wrapper* ) userparam;
     wrapper->funcs.dhTdx_vec( out, T, x, p, vec, wrapper->user_param );
@@ -249,7 +249,7 @@ void dhTdx_vec(typeRNum *out, ctypeRNum T, ctypeRNum *x, ctypeRNum *p, ctypeRNum
 
 
 /** Jacobian dhT/dp multiplied by vector vec, i.e. (dhT/dp)^T*vec or vec^T*(dhT/dp) **/
-void dhTdp_vec(typeRNum *out, ctypeRNum T, ctypeRNum *x, ctypeRNum *p, ctypeRNum *vec, typeUSERPARAM *userparam)
+void dhTdp_vec( typeRNum *out, ctypeRNum T, ctypeRNum *x, ctypeRNum *p, ctypeRNum *vec, typeUSERPARAM *userparam )
 {
     julia_user_wrapper* wrapper = ( julia_user_wrapper* ) userparam;
     wrapper->funcs.dhTdp_vec( out, T, x, p, vec, wrapper->user_param );
@@ -257,7 +257,7 @@ void dhTdp_vec(typeRNum *out, ctypeRNum T, ctypeRNum *x, ctypeRNum *p, ctypeRNum
 
 
 /** Jacobian dhT/dT multiplied by vector vec, i.e. (dhT/dT)^T*vec or vec^T*(dhT/dT) **/
-void dhTdT_vec(typeRNum *out, ctypeRNum T, ctypeRNum *x, ctypeRNum *p, ctypeRNum *vec, typeUSERPARAM *userparam)
+void dhTdT_vec( typeRNum *out, ctypeRNum T, ctypeRNum *x, ctypeRNum *p, ctypeRNum *vec, typeUSERPARAM *userparam )
 {
     julia_user_wrapper* wrapper = ( julia_user_wrapper* ) userparam;
     wrapper->funcs.dhTdT_vec( out, T, x, p, vec, wrapper->user_param );
@@ -269,7 +269,7 @@ void dhTdT_vec(typeRNum *out, ctypeRNum T, ctypeRNum *x, ctypeRNum *p, ctypeRNum
     see GRAMPC docu for more information
     ------------------------------------------------------- **/
 /** Jacobian df/dx in vector form (column-wise) **/
-void dfdx(typeRNum *out, ctypeRNum t, ctypeRNum *x, ctypeRNum *u, ctypeRNum *p, typeUSERPARAM *userparam)
+void dfdx( typeRNum *out, ctypeRNum t, ctypeRNum *x, ctypeRNum *u, ctypeRNum *p, typeUSERPARAM *userparam )
 {
     julia_user_wrapper* wrapper = ( julia_user_wrapper* ) userparam;
     wrapper->funcs.dfdx( out, t, x, u, p, wrapper->user_param );
@@ -277,7 +277,7 @@ void dfdx(typeRNum *out, ctypeRNum t, ctypeRNum *x, ctypeRNum *u, ctypeRNum *p, 
 
 
 /** Jacobian df/dx in vector form (column-wise) **/
-void dfdxtrans(typeRNum *out, ctypeRNum t, ctypeRNum *x, ctypeRNum *u, ctypeRNum *p, typeUSERPARAM *userparam)
+void dfdxtrans( typeRNum *out, ctypeRNum t, ctypeRNum *x, ctypeRNum *u, ctypeRNum *p, typeUSERPARAM *userparam )
 {
     julia_user_wrapper* wrapper = ( julia_user_wrapper* ) userparam;
     wrapper->funcs.dfdxtrans( out, t, x, u, p, wrapper->user_param );
@@ -285,7 +285,7 @@ void dfdxtrans(typeRNum *out, ctypeRNum t, ctypeRNum *x, ctypeRNum *u, ctypeRNum
 
 
 /** Jacobian df/dt **/
-void dfdt(typeRNum *out, ctypeRNum t, ctypeRNum *x, ctypeRNum *u, ctypeRNum *p, typeUSERPARAM *userparam)
+void dfdt( typeRNum *out, ctypeRNum t, ctypeRNum *x, ctypeRNum *u, ctypeRNum *p, typeUSERPARAM *userparam )
 {
     julia_user_wrapper* wrapper = ( julia_user_wrapper* ) userparam;
     wrapper->funcs.dfdt( out, t, x, u, p, wrapper->user_param );
@@ -293,7 +293,7 @@ void dfdt(typeRNum *out, ctypeRNum t, ctypeRNum *x, ctypeRNum *u, ctypeRNum *p, 
 
 
 /** Jacobian d(dH/dx)/dt  **/
-void dHdxdt(typeRNum *out, ctypeRNum t, ctypeRNum *x, ctypeRNum *u, ctypeRNum *vec, ctypeRNum *p, typeUSERPARAM *userparam)
+void dHdxdt( typeRNum *out, ctypeRNum t, ctypeRNum *x, ctypeRNum *u, ctypeRNum *vec, ctypeRNum *p, typeUSERPARAM *userparam )
 {
     julia_user_wrapper* wrapper = ( julia_user_wrapper* ) userparam;
     wrapper->funcs.dHdxdt( out, t, x, u, vec, p, wrapper->user_param );
@@ -301,7 +301,7 @@ void dHdxdt(typeRNum *out, ctypeRNum t, ctypeRNum *x, ctypeRNum *u, ctypeRNum *v
 
 
 /** Mass matrix in vector form (column-wise, either banded or full matrix) **/
-void Mfct(typeRNum *out, typeUSERPARAM *userparam)
+void Mfct( typeRNum *out, typeUSERPARAM *userparam )
 {
     julia_user_wrapper* wrapper = ( julia_user_wrapper* ) userparam;
     wrapper->funcs.Mfct( out, wrapper->user_param );
@@ -309,7 +309,7 @@ void Mfct(typeRNum *out, typeUSERPARAM *userparam)
 
 
 /** Transposed mass matrix in vector form (column-wise, either banded or full matrix) **/
-void Mtrans(typeRNum *out, typeUSERPARAM *userparam)
+void Mtrans( typeRNum *out, typeUSERPARAM *userparam )
 {
     julia_user_wrapper* wrapper = ( julia_user_wrapper* ) userparam;
     wrapper->funcs.Mtrans( out, wrapper->user_param );
