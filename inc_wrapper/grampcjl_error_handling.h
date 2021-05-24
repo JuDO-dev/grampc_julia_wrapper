@@ -22,8 +22,8 @@
  * SOFTWARE.
  */
 
-#ifndef _GRAMPCJL_ERROR_HANDLING_H_
-#define _GRAMPCJL_ERROR_HANDLING_H_
+#ifndef GRAMPCJL_ERROR_HANDLING_H_
+#define GRAMPCJL_ERROR_HANDLING_H_
 
 /*
  * Julia-specific error handling functions.
@@ -56,4 +56,4 @@ void printWarningAddString( const char* mess, const char* addstring );
 #define myPrint( x, y ) printf( (x), (y) )
 
 
-#endif // _GRAMPCJL_ERROR_HANDLING_H_
+#endif // GRAMPCJL_ERROR_HANDLING_H_
