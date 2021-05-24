@@ -264,6 +264,7 @@ void grampc_alloc_fields(typeGRAMPC **grampc, typeUSERPARAM *userparam)
     createNumMatrix(&(*grampc)->param->pmin, (*grampc)->param->Np);
 
     /* OPTIONS STRUCTURE *******************************************************/
+    createIntMatrix(&(*grampc)->opt->FlagsRodas, 8);
     createNumMatrix(&(*grampc)->opt->xScale, (*grampc)->param->Nx);
     createNumMatrix(&(*grampc)->opt->xOffset, (*grampc)->param->Nx);
     createNumMatrix(&(*grampc)->opt->uScale, (*grampc)->param->Nu);
@@ -319,6 +320,7 @@ void grampc_free(typeGRAMPC **grampc)
     free((*grampc)->param->pmax);
     free((*grampc)->param->pmin);
 
+    free((*grampc)->opt->FlagsRodas);
     free((*grampc)->opt->xScale);
     free((*grampc)->opt->xOffset);
     free((*grampc)->opt->uScale);

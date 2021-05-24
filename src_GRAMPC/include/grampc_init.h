@@ -97,7 +97,7 @@ typedef struct
 	typeRNum IntegratorAbsTol;
 	typeRNum IntegratorMinStepSize;
 	typeInt  IntegratorMaxSteps;
-    typeInt  FlagsRodas[8];
+    typeInt  *FlagsRodas;
 
 	typeInt  LineSearchType;
 	typeInt  LineSearchExpAutoFallback;
