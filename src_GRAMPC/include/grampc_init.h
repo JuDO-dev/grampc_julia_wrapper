@@ -108,7 +108,7 @@ typedef struct
 	typeRNum LineSearchAdaptFactor;
 	typeRNum LineSearchIntervalTol;
 	typeRNum LineSearchIntervalFactor;
-	
+
 	typeInt  OptimControl;
 	typeInt  OptimParam;
 	typeRNum OptimParamLineSearchFactor;
@@ -190,7 +190,7 @@ typedef struct
 	typeRNum *pnext;
 #endif
 	typeRNum Tnext;
-    typeRNum J[2];
+    typeRNum *J;
 	typeRNum cfct;
 	typeRNum pen;
 #if defined(FIXEDSIZE) && (MAXMULTITER > 0)

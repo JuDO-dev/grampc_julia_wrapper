@@ -277,6 +277,7 @@ void grampc_alloc_fields(typeGRAMPC **grampc, typeUSERPARAM *userparam)
     createNumMatrix(&(*grampc)->sol->xnext, (*grampc)->param->Nx);
     createNumMatrix(&(*grampc)->sol->unext, (*grampc)->param->Nu);
     createNumMatrix(&(*grampc)->sol->pnext, (*grampc)->param->Np);
+    createNumMatrix(&(*grampc)->sol->J, 2);
     createIntMatrix(&(*grampc)->sol->iter, (*grampc)->opt->MaxMultIter);
 
     /* RWS STRUCTURE **********************************************************/
@@ -330,6 +331,7 @@ void grampc_free(typeGRAMPC **grampc)
     free((*grampc)->sol->xnext);
     free((*grampc)->sol->unext);
     free((*grampc)->sol->pnext);
+    free((*grampc)->sol->J);
     free((*grampc)->sol->iter);
 
     free((*grampc)->rws->t);
