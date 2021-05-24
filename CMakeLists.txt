@@ -64,6 +64,7 @@ set( SOURCES
 add_library( grampc_julia SHARED
              ${CMAKE_CURRENT_SOURCE_DIR}/src_wrapper/grampcjl_error_handling.c
              ${CMAKE_CURRENT_SOURCE_DIR}/src_wrapper/grampcjl_problem_functions.c
+             ${CMAKE_CURRENT_SOURCE_DIR}/src_wrapper/grampcjl_wrapper.c
              ${SOURCES}
             )
 

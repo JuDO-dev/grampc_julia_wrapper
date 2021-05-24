@@ -147,17 +147,6 @@ typedef struct
     dHdxdt_func         dHdxdt;
     Mfct_func           Mfct;
     Mtrans_func         Mtrans;
-} julia_funcs_wrapper;
-
-
-/**
- * Struct to wrap the user parmaeters with the wrapper function pointers.
- */
-typedef struct
-{
-    julia_funcs_wrapper funcs;
-    typeUSERPARAM*      user_param;
-} julia_user_wrapper;
-
+} grampcjl_callbacks;
 
 #endif //  GRAMPCJL_PROBLEM_FUNCTIONS_H_
