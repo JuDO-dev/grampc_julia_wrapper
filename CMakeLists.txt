@@ -68,6 +68,8 @@ add_library( grampc_julia SHARED
              ${SOURCES}
             )
 
+set_property( TARGET grampc_julia PROPERTY C_STANDARD 99 )
+
 target_include_directories( grampc_julia PRIVATE
                             ${CMAKE_CURRENT_SOURCE_DIR}/inc_wrapper
                             ${GRAMPC_PATH}/include

@@ -25,6 +25,8 @@
 #ifndef GRAMPCJL_ERROR_HANDLING_H_
 #define GRAMPCJL_ERROR_HANDLING_H_
 
+#include <julia.h>
+
 /*
  * Julia-specific error handling functions.
  */
@@ -42,14 +44,24 @@ int grampcjl_get_last_warning( char* message );
  */
 void grampcjl_clear_last_warning();
 
-
 /*
  * GRAMPC-internal error handling functions.
  *
- * We need to override these so that we can store the error as appropriate.
+ * We need to override these so that we can throw the error to the Julia REPL
  */
-void printError( const char* x );
-void printErrorAddString( const char* mess, const char* addstring );
+inline void printError( const char* x )
+{
+    // Throw a Julia ErrorException with the provided message
+    jl_error( x );
+}
+
+inline void printErrorAddString( const char* mess, const char* addstring )
+{
+    // Throw a Julia ErrorException with the provided message
+    jl_errorf( "%s: %s", mess, addstring );
+}
+
+
 void printWarningAddString( const char* mess, const char* addstring );
 
 // Keep this the same definition as the normal grampc code

@@ -24,11 +24,12 @@
 
 #include "grampcjl_error_handling.h"
 
-#include "julia.h"
-
 #include "stdio.h"
 #include "string.h"
 
+// Declarations for C99 function inlining
+extern inline void printError( const char* x );
+extern inline void printErrorAddString( const char* mess, const char* addstring );
 
 // Static variables to hold the last warning information
 // We really should never have very long messages, so just make the buffer very long
@@ -53,20 +54,6 @@ int grampcjl_get_last_warning( char* message )
     grampcjl_clear_last_warning();
 
     return retVal;
-}
-
-
-void printError( const char* x )
-{
-    // Throw a Julia ErrorException with the provided message
-    jl_error( x );
-}
-
-
-void printErrorAddString( const char* mess, const char* addstring )
-{
-    // Throw a Julia ErrorException with the provided message
-    jl_errorf( "%s: %s", mess, addstring );
 }
 
 
